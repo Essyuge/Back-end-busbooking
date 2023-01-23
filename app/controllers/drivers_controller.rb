@@ -1,30 +1,41 @@
 class DriversController < ApplicationController
-     
-    def index
-       drivers = Driver.all
-       render json: drivers, status: :ok
-    end
+    rescue_from ActiveRecord::RecordNotFound, with: :rescue_from_not_found_record
+    rescue_from ActiveRecord::RecordInvalid, with:  :rescue_from_invalid_record
+    before_action :authorize, only: [:me]
 
-    
+    def index
+        render json: Driver.all, status: :ok
+    end
 
     def show
-        driver = Driver.find(session[:driver_id])
-        if driver
-            render json: driver, status: :OK
-        else
-            render json: {error: "user not authorized"}, status: :unauthorized
-        end
-    end
-
-    def update
         driver = Driver.find_by(id: params[:id])
-        driver.update!(driver_params)
-        render json: driver
+        render json: driver, status: :ok
     end
 
     def create
         driver = Driver.create!(driver_params)
         render json: driver, status: :created
+    end
+
+    def update
+        driver = Driver.find_by(id: params[:id])
+        driver.update!(driver_params)
+        render json: driver, status: :updated
+    end
+
+    def destroy
+        driver = Driver.find(params[:id])
+        driver.destroy
+        head :no_content
+    end
+
+    def me
+        driver = Driver.find(session[:driver_id])
+        if driver
+            render json: driver
+        else
+            render json: {error: "user not authorized"}, status: :unauthorized
+        end
     end
 
     def signup
@@ -61,5 +72,13 @@ class DriversController < ApplicationController
 
     def driver_params
         params.permit(:username, :email, :phone_number, :password, :password_confirmation)
+    end
+
+    def rescue_from_not_found_record
+        render json: {error: "Driver not found"}, status: :not_found 
+    end
+
+    def rescue_from_invalid_record(e)
+        render json: {errors: e.record.errors.full_messages}, status: :unprocessable_entity 
     end
 end

@@ -1,45 +1,48 @@
 class RoutesController < ApplicationController
-rescue_from ActiveRecord::RecordInvalid, with:  :rescue_from_invalid_record
-
-    def index
-        routes = Route.all
-        render json: routes, status: :ok
+    rescue_from ActiveRecord::RecordNotFound, with: :rescue_from_not_found_record
+    rescue_from ActiveRecord::RecordInvalid, with:  :rescue_from_invalid_record
+    
+        def index
+            render json: Route.all, status: :ok
+        end
+    
+        def create
+            route = Route.create!(route_params)
+            render json: route, status: :created
+        end
+    
+        def update
+            route = Route.find_by(id: params[:id])
+            route.update!(route_params)
+            render json: route
+        end
+    
+        def destroy 
+            route = Route.find(params[:id])
+            route.destroy
+            head :no_content
+        end
+    
+        def show
+            route = Route.find_by(id: params[:id])
+            render json: route, status: :ok 
+        end
+    
+        private
+        def route_params
+            params.permit(:from, :to, :image, :busnumber, :date, :time, :cost, :admin_id)
+        end
+    
+        def rescue_from_not_found_record
+            render json: {error: "Route not found"}, status: :not_found 
+        end
+    
+        def rescue_from_invalid_record(e)
+            render json: {errors: e.record.errors.full_messages}, status: :unprocessable_entity 
+        end
+    
+        def admin
+            @admin ||= Admin.find(params[:admin_id])
+        end
     end
-
-    def show
-        routes = Route.find(params[:id])
-        render json: routes, status: :ok
-    end
-
-    def create
-        routes = Route.create!(routes_params)
-        render json: routes, status: :created
-    end
-
-    def update
-        routes = Route.find_by(id: params[:id])
-        routes.update!(routes_params)
-        render json: routes
-    end
-
-    def destroy 
-        routes = Route.find(params[:id])
-        routes.destroy
-        head :no_content
-    end
-
-
-    private
-    def routes_params
-        params.permit(:from, :to, :price, :admin_id)
-    end
-
-    def rescue_from_not_found_record
-        render json: {error: "Route not found"}, status: :not_found 
-    end
-
-    def rescue_from_invalid_record(e)
-        render json: {errors: e.record.errors.full_messages}, status: :unprocessable_entity 
-    end
-
-end
+    
