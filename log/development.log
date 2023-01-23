@@ -4413,3 +4413,11 @@ Migrating to CreateRoutes (20221220071946)
   [1m[36mBus Load (0.2ms)[0m  [1m[34mSELECT "buses".* FROM "buses" WHERE "buses"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
   [1m[36mBooking Create (0.5ms)[0m  [1m[32mINSERT INTO "bookings" ("name", "phonenumber", "busnumber", "from", "to", "seat", "cost", "client_id", "bus_id", "no_of_passangers", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "odipoh"], ["phonenumber", "+89653412"], ["busnumber", "KDH789C"], ["from", "Nairobi"], ["to", "Machakos"], ["seat", "F4"], ["cost", "$100"], ["client_id", "3"], ["bus_id", "2"], ["no_of_passangers", "1"], ["created_at", "2023-01-23 08:20:45.158959"], ["updated_at", "2023-01-23 08:20:45.158959"]]
   [1m[36mTRANSACTION (8.1ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/" for 127.0.0.1 at 2023-01-23 12:17:19 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /var/lib/gems/3.0.0/gems/railties-7.0.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/3.0.0/gems/railties-7.0.4.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 11.6ms | Allocations: 930)
+Completed 200 OK in 54ms (Views: 28.2ms | ActiveRecord: 0.0ms | Allocations: 7832)
+
+
