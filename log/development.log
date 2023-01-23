@@ -4421,3 +4421,31 @@ Processing by Rails::WelcomeController#index as HTML
 Completed 200 OK in 54ms (Views: 28.2ms | ActiveRecord: 0.0ms | Allocations: 7832)
 
 
+Started GET "/routes" for 127.0.0.1 at 2023-01-23 12:24:53 +0300
+Processing by RoutesController#index as HTML
+  [1m[36mRoute Load (0.2ms)[0m  [1m[34mSELECT "routes".* FROM "routes"[0m
+  ↳ app/controllers/routes_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.46ms)
+Completed 200 OK in 488ms (Views: 459.9ms | ActiveRecord: 1.8ms | Allocations: 29640)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2023-01-23 12:24:54 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/buses" for 127.0.0.1 at 2023-01-23 12:25:04 +0300
+Processing by BusesController#index as HTML
+  [1m[36mBus Load (0.2ms)[0m  [1m[34mSELECT "buses".* FROM "buses"[0m
+  ↳ app/controllers/buses_controller.rb:4:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.45ms)
+Completed 200 OK in 59ms (Views: 39.7ms | ActiveRecord: 0.7ms | Allocations: 22897)
+
+
+Started GET "/bookings" for 127.0.0.1 at 2023-01-23 12:25:10 +0300
+Processing by BookingsController#index as HTML
+  [1m[36mBooking Load (0.3ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings"[0m
+  ↳ app/controllers/bookings_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.62ms)
+Completed 200 OK in 67ms (Views: 36.3ms | ActiveRecord: 6.5ms | Allocations: 21938)
+
+
