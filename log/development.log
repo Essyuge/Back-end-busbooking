@@ -4262,3 +4262,154 @@ Completed 200 OK in 161ms (Views: 1.5ms | ActiveRecord: 142.9ms | Allocations: 6
   [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
   [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (28.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (11.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateAdmins (20221218062800)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "admins" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar, "email" varchar, "password_digest" varchar, "phone_number" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221218062800"]]
+  [1m[36mTRANSACTION (11.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateDrivers (20221218062925)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "drivers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar, "email" varchar, "password_digest" varchar, "phone_number" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221218062925"]]
+  [1m[36mTRANSACTION (12.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateClients (20221218063037)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "clients" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar, "email" varchar, "address" varchar, "password_digest" varchar, "phone_number" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221218063037"]]
+  [1m[36mTRANSACTION (16.5ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateBuses (20221220071509)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "buses" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "number_plate" varchar, "fleet_no" varchar, "image" varchar, "route_id" integer, "driver_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221220071509"]]
+  [1m[36mTRANSACTION (26.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateBookings (20221220071832)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "bookings" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "phonenumber" varchar, "busnumber" varchar, "from" varchar, "to" varchar, "seat" varchar, "cost" varchar, "client_id" varchar, "bus_id" varchar, "no_of_passangers" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221220071832"]]
+  [1m[36mTRANSACTION (17.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateRoutes (20221220071946)
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "routes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "from" varchar, "to" varchar, "busnumber" varchar, "date" varchar, "time" varchar, "cost" varchar, "image" varchar, "admin_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221220071946"]]
+  [1m[36mTRANSACTION (29.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-01-23 08:20:28.119042"], ["updated_at", "2023-01-23 08:20:28.119042"]]
+  [1m[36mTRANSACTION (11.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mAdmin Load (0.1ms)[0m  [1m[34mSELECT "admins".* FROM "admins"[0m
+  [1m[36mBooking Load (0.4ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings"[0m
+  [1m[36mBus Load (0.2ms)[0m  [1m[34mSELECT "buses".* FROM "buses"[0m
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT "clients".* FROM "clients"[0m
+  [1m[36mDriver Load (0.2ms)[0m  [1m[34mSELECT "drivers".* FROM "drivers"[0m
+  [1m[36mRoute Load (0.2ms)[0m  [1m[34mSELECT "routes".* FROM "routes"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAdmin Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "admins" WHERE "admins"."username" = ? LIMIT ?[0m  [["username", "levin"], ["LIMIT", 1]]
+  [1m[36mAdmin Create (0.4ms)[0m  [1m[32mINSERT INTO "admins" ("username", "email", "password_digest", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "levin"], ["email", "levin@gmail.com"], ["password_digest", "[FILTERED]"], ["phone_number", "0202587855"], ["created_at", "2023-01-23 08:20:41.580160"], ["updated_at", "2023-01-23 08:20:41.580160"]]
+  [1m[36mTRANSACTION (11.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAdmin Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "admins" WHERE "admins"."username" = ? LIMIT ?[0m  [["username", "dieto"], ["LIMIT", 1]]
+  [1m[36mAdmin Create (0.4ms)[0m  [1m[32mINSERT INTO "admins" ("username", "email", "password_digest", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "dieto"], ["email", "dieto@gmail.com"], ["password_digest", "[FILTERED]"], ["phone_number", "0202587866"], ["created_at", "2023-01-23 08:20:41.983950"], ["updated_at", "2023-01-23 08:20:41.983950"]]
+  [1m[36mTRANSACTION (9.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mClient Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "clients" WHERE "clients"."username" = ? LIMIT ?[0m  [["username", "beryl"], ["LIMIT", 1]]
+  [1m[36mClient Create (0.3ms)[0m  [1m[32mINSERT INTO "clients" ("username", "email", "address", "password_digest", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["username", "beryl"], ["email", "beryl@mail.com"], ["address", "beryl address"], ["password_digest", "[FILTERED]"], ["phone_number", "+789653477"], ["created_at", "2023-01-23 08:20:42.376079"], ["updated_at", "2023-01-23 08:20:42.376079"]]
+  [1m[36mTRANSACTION (13.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mClient Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "clients" WHERE "clients"."username" = ? LIMIT ?[0m  [["username", "odipoh"], ["LIMIT", 1]]
+  [1m[36mClient Create (0.4ms)[0m  [1m[32mINSERT INTO "clients" ("username", "email", "address", "password_digest", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["username", "odipoh"], ["email", "odipoh@mail.com"], ["address", "odipoh address"], ["password_digest", "[FILTERED]"], ["phone_number", "+89653412"], ["created_at", "2023-01-23 08:20:42.785969"], ["updated_at", "2023-01-23 08:20:42.785969"]]
+  [1m[36mTRANSACTION (8.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mClient Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "clients" WHERE "clients"."username" = ? LIMIT ?[0m  [["username", "esther"], ["LIMIT", 1]]
+  [1m[36mClient Create (0.3ms)[0m  [1m[32mINSERT INTO "clients" ("username", "email", "address", "password_digest", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["username", "esther"], ["email", "esther@mail.com"], ["address", "esther address"], ["password_digest", "[FILTERED]"], ["phone_number", "+89003477"], ["created_at", "2023-01-23 08:20:43.168706"], ["updated_at", "2023-01-23 08:20:43.168706"]]
+  [1m[36mTRANSACTION (13.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mClient Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "clients" WHERE "clients"."username" = ? LIMIT ?[0m  [["username", "kevin"], ["LIMIT", 1]]
+  [1m[36mClient Create (0.4ms)[0m  [1m[32mINSERT INTO "clients" ("username", "email", "address", "password_digest", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["username", "kevin"], ["email", "kevin@mail.com"], ["address", "kevin address"], ["password_digest", "[FILTERED]"], ["phone_number", "+177653477"], ["created_at", "2023-01-23 08:20:43.548217"], ["updated_at", "2023-01-23 08:20:43.548217"]]
+  [1m[36mTRANSACTION (10.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDriver Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "drivers" WHERE "drivers"."username" = ? LIMIT ?[0m  [["username", "kevin"], ["LIMIT", 1]]
+  [1m[36mDriver Create (0.3ms)[0m  [1m[32mINSERT INTO "drivers" ("username", "email", "password_digest", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "kevin"], ["email", "kevin@gmail.com"], ["password_digest", "[FILTERED]"], ["phone_number", "+66778890"], ["created_at", "2023-01-23 08:20:44.024181"], ["updated_at", "2023-01-23 08:20:44.024181"]]
+  [1m[36mTRANSACTION (16.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDriver Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "drivers" WHERE "drivers"."username" = ? LIMIT ?[0m  [["username", "lomenen"], ["LIMIT", 1]]
+  [1m[36mDriver Create (0.3ms)[0m  [1m[32mINSERT INTO "drivers" ("username", "email", "password_digest", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["username", "lomenen"], ["email", "lomenen@gmail.com"], ["password_digest", "[FILTERED]"], ["phone_number", "+766778855"], ["created_at", "2023-01-23 08:20:44.432317"], ["updated_at", "2023-01-23 08:20:44.432317"]]
+  [1m[36mTRANSACTION (18.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDriver Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "drivers" WHERE "drivers"."username" = ? LIMIT ?[0m  [["username", "kevin"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAdmin Load (0.2ms)[0m  [1m[34mSELECT "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoute Create (0.3ms)[0m  [1m[32mINSERT INTO "routes" ("from", "to", "busnumber", "date", "time", "cost", "image", "admin_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["from", "Nairobi"], ["to", "Mombasa"], ["busnumber", "KDK123A"], ["date", "2023-01-28"], ["time", "13:45"], ["cost", "$200"], ["image", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWdmO3DvAPeBgQxWCrjDDQ3lkuRxzuD8JuOQJAocX8TxDzcXznK6wrogRCwbtawDM-nFk&usqp=CAU"], ["admin_id", 1], ["created_at", "2023-01-23 08:20:44.925919"], ["updated_at", "2023-01-23 08:20:44.925919"]]
+  [1m[36mTRANSACTION (8.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAdmin Load (0.1ms)[0m  [1m[34mSELECT "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRoute Create (0.7ms)[0m  [1m[32mINSERT INTO "routes" ("from", "to", "busnumber", "date", "time", "cost", "image", "admin_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["from", "Nairobi"], ["to", "Kisumu"], ["busnumber", "KDL456B"], ["date", "2023-01-29"], ["time", "15:42"], ["cost", "$150"], ["image", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgooV4BazOcR1dlZZHhGh0ScCuzB20rGWBH1cd59BVMoPBQpCKE_yKVRPYipr7opxOLQE&usqp=CAU"], ["admin_id", 2], ["created_at", "2023-01-23 08:20:44.940944"], ["updated_at", "2023-01-23 08:20:44.940944"]]
+  [1m[36mTRANSACTION (8.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAdmin Load (0.1ms)[0m  [1m[34mSELECT "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoute Create (0.3ms)[0m  [1m[32mINSERT INTO "routes" ("from", "to", "busnumber", "date", "time", "cost", "image", "admin_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["from", "Nairobi"], ["to", "Machakos"], ["busnumber", "KDH789C"], ["date", "2023-01-30"], ["time", "21:32"], ["cost", "$100"], ["image", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGXuWcmPnecgkoRyy2M2UWJZ_RW4z4ZXsoQnCYhQC-Z69qvK3OvJTMuuey2tTTg3JIkJA&usqp=CAU"], ["admin_id", 1], ["created_at", "2023-01-23 08:20:44.956832"], ["updated_at", "2023-01-23 08:20:44.956832"]]
+  [1m[36mTRANSACTION (8.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAdmin Load (0.1ms)[0m  [1m[34mSELECT "admins".* FROM "admins" WHERE "admins"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoute Create (0.4ms)[0m  [1m[32mINSERT INTO "routes" ("from", "to", "busnumber", "date", "time", "cost", "image", "admin_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["from", "Nairobi"], ["to", "Naivasha"], ["busnumber", "KDM987D"], ["date", "2023-02-02"], ["time", "18:03"], ["cost", "$80"], ["image", "https://www.ebusco.com/wp-content/uploads/ebusco_22_18m_furth_01-scaled.jpg"], ["admin_id", 1], ["created_at", "2023-01-23 08:20:44.972126"], ["updated_at", "2023-01-23 08:20:44.972126"]]
+  [1m[36mTRANSACTION (8.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRoute Load (0.2ms)[0m  [1m[34mSELECT "routes".* FROM "routes" WHERE "routes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRoute Load (0.1ms)[0m  [1m[34mSELECT "routes".* FROM "routes" WHERE "routes"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDriver Load (0.2ms)[0m  [1m[34mSELECT "drivers".* FROM "drivers" WHERE "drivers"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mBus Create (0.3ms)[0m  [1m[32mINSERT INTO "buses" ("number_plate", "fleet_no", "image", "route_id", "driver_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["number_plate", "KDM987D"], ["fleet_no", "09876"], ["image", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgooV4BazOcR1dlZZHhGh0ScCuzB20rGWBH1cd59BVMoPBQpCKE_yKVRPYipr7opxOLQE&usqp=CAU"], ["route_id", 2], ["driver_id", 2], ["created_at", "2023-01-23 08:20:45.008481"], ["updated_at", "2023-01-23 08:20:45.008481"]]
+  [1m[36mTRANSACTION (8.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRoute Load (0.1ms)[0m  [1m[34mSELECT "routes".* FROM "routes" WHERE "routes"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mDriver Load (0.1ms)[0m  [1m[34mSELECT "drivers".* FROM "drivers" WHERE "drivers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBus Create (0.5ms)[0m  [1m[32mINSERT INTO "buses" ("number_plate", "fleet_no", "image", "route_id", "driver_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["number_plate", "KDL456B"], ["fleet_no", "37829"], ["image", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGXuWcmPnecgkoRyy2M2UWJZ_RW4z4ZXsoQnCYhQC-Z69qvK3OvJTMuuey2tTTg3JIkJA&usqp=CAU"], ["route_id", 3], ["driver_id", 1], ["created_at", "2023-01-23 08:20:45.024760"], ["updated_at", "2023-01-23 08:20:45.024760"]]
+  [1m[36mTRANSACTION (8.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRoute Load (0.1ms)[0m  [1m[34mSELECT "routes".* FROM "routes" WHERE "routes"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mDriver Load (0.1ms)[0m  [1m[34mSELECT "drivers".* FROM "drivers" WHERE "drivers"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mBus Create (0.3ms)[0m  [1m[32mINSERT INTO "buses" ("number_plate", "fleet_no", "image", "route_id", "driver_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["number_plate", "KDH789C"], ["fleet_no", "78546"], ["image", "https://www.ebusco.com/wp-content/uploads/ebusco_22_18m_furth_01-scaled.jpg"], ["route_id", 4], ["driver_id", 2], ["created_at", "2023-01-23 08:20:45.041963"], ["updated_at", "2023-01-23 08:20:45.041963"]]
+  [1m[36mTRANSACTION (17.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRoute Load (0.1ms)[0m  [1m[34mSELECT "routes".* FROM "routes" WHERE "routes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRoute Load (0.2ms)[0m  [1m[34mSELECT "routes".* FROM "routes" WHERE "routes"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDriver Load (0.1ms)[0m  [1m[34mSELECT "drivers".* FROM "drivers" WHERE "drivers"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mBus Create (0.3ms)[0m  [1m[32mINSERT INTO "buses" ("number_plate", "fleet_no", "image", "route_id", "driver_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["number_plate", "KDM987D"], ["fleet_no", "09876"], ["image", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgooV4BazOcR1dlZZHhGh0ScCuzB20rGWBH1cd59BVMoPBQpCKE_yKVRPYipr7opxOLQE&usqp=CAU"], ["route_id", 2], ["driver_id", 2], ["created_at", "2023-01-23 08:20:45.071144"], ["updated_at", "2023-01-23 08:20:45.071144"]]
+  [1m[36mTRANSACTION (7.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRoute Load (0.1ms)[0m  [1m[34mSELECT "routes".* FROM "routes" WHERE "routes"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mDriver Load (0.1ms)[0m  [1m[34mSELECT "drivers".* FROM "drivers" WHERE "drivers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBus Create (0.3ms)[0m  [1m[32mINSERT INTO "buses" ("number_plate", "fleet_no", "image", "route_id", "driver_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["number_plate", "KDL456B"], ["fleet_no", "37829"], ["image", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGXuWcmPnecgkoRyy2M2UWJZ_RW4z4ZXsoQnCYhQC-Z69qvK3OvJTMuuey2tTTg3JIkJA&usqp=CAU"], ["route_id", 3], ["driver_id", 1], ["created_at", "2023-01-23 08:20:45.085929"], ["updated_at", "2023-01-23 08:20:45.085929"]]
+  [1m[36mTRANSACTION (8.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRoute Load (0.1ms)[0m  [1m[34mSELECT "routes".* FROM "routes" WHERE "routes"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mDriver Load (0.1ms)[0m  [1m[34mSELECT "drivers".* FROM "drivers" WHERE "drivers"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mBus Create (0.3ms)[0m  [1m[32mINSERT INTO "buses" ("number_plate", "fleet_no", "image", "route_id", "driver_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["number_plate", "KDH789C"], ["fleet_no", "78546"], ["image", "https://www.ebusco.com/wp-content/uploads/ebusco_22_18m_furth_01-scaled.jpg"], ["route_id", 4], ["driver_id", 2], ["created_at", "2023-01-23 08:20:45.102221"], ["updated_at", "2023-01-23 08:20:45.102221"]]
+  [1m[36mTRANSACTION (7.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mClient Load (0.1ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mBus Load (0.2ms)[0m  [1m[34mSELECT "buses".* FROM "buses" WHERE "buses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBooking Create (0.3ms)[0m  [1m[32mINSERT INTO "bookings" ("name", "phonenumber", "busnumber", "from", "to", "seat", "cost", "client_id", "bus_id", "no_of_passangers", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "esther"], ["phonenumber", "+89003477"], ["busnumber", "KDM987D"], ["from", "Nairobi"], ["to", "Naivasha"], ["seat", "F3"], ["cost", "$80"], ["client_id", "2"], ["bus_id", "1"], ["no_of_passangers", "1"], ["created_at", "2023-01-23 08:20:45.140430"], ["updated_at", "2023-01-23 08:20:45.140430"]]
+  [1m[36mTRANSACTION (8.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mClient Load (0.1ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mBus Load (0.2ms)[0m  [1m[34mSELECT "buses".* FROM "buses" WHERE "buses"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mBooking Create (0.5ms)[0m  [1m[32mINSERT INTO "bookings" ("name", "phonenumber", "busnumber", "from", "to", "seat", "cost", "client_id", "bus_id", "no_of_passangers", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "odipoh"], ["phonenumber", "+89653412"], ["busnumber", "KDH789C"], ["from", "Nairobi"], ["to", "Machakos"], ["seat", "F4"], ["cost", "$100"], ["client_id", "3"], ["bus_id", "2"], ["no_of_passangers", "1"], ["created_at", "2023-01-23 08:20:45.158959"], ["updated_at", "2023-01-23 08:20:45.158959"]]
+  [1m[36mTRANSACTION (8.1ms)[0m  [1m[36mcommit transaction[0m

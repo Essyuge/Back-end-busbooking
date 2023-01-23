@@ -21,13 +21,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_20_071946) do
   end
 
   create_table "bookings", force: :cascade do |t|
+    t.string "name"
+    t.string "phonenumber"
+    t.string "busnumber"
     t.string "from"
     t.string "to"
-    t.string "date"
-    t.string "price"
-    t.integer "client_id"
-    t.integer "bus_id"
-    t.integer "no_of_passangers"
+    t.string "seat"
+    t.string "cost"
+    t.string "client_id"
+    t.string "bus_id"
+    t.string "no_of_passangers"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -35,6 +38,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_20_071946) do
   create_table "buses", force: :cascade do |t|
     t.string "number_plate"
     t.string "fleet_no"
+    t.string "image"
     t.integer "route_id"
     t.integer "driver_id"
     t.datetime "created_at", null: false
@@ -44,6 +48,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_20_071946) do
   create_table "clients", force: :cascade do |t|
     t.string "username"
     t.string "email"
+    t.string "address"
     t.string "password_digest"
     t.string "phone_number"
     t.datetime "created_at", null: false
@@ -60,10 +65,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_20_071946) do
   end
 
   create_table "routes", force: :cascade do |t|
-    t.integer "admin_id"
     t.string "from"
     t.string "to"
-    t.string "price"
+    t.string "busnumber"
+    t.string "date"
+    t.string "time"
+    t.string "cost"
+    t.string "image"
+    t.integer "admin_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
